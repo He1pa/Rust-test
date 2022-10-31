@@ -10,8 +10,6 @@ on:
     - master
 jobs:
   Test:
-    runs-on: ubuntu-lastest
-    container: rust:lastest
     steps:
     - uses: actions/checkout@v2
     - name: Install cargo2junit

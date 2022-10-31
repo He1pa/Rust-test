@@ -1,0 +1,26 @@
+name: rust-cov-test
+on:
+  push:
+    branch:
+    - main
+    - master
+  pull_request:
+    branch:
+    - main
+    - master
+jobs:
+  Test:
+    runs-on: ubuntu-lastest
+    container: rust:lastest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install cargo2junit
+      run: cargo install cargo2junit
+    - name: Test
+      run: cargo test -p nexus_unity_sdbp -- -Z unstable-options --format json --report-time
+        | cargo2junit > results.xml
+    - name: Publish result
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      with:
+        files: results.xml
+      if: always()

@@ -1,11 +1,11 @@
 name: rust-cov-test
 on:
   push:
-    branch:
+    branches:
     - main
     - master
   pull_request:
-    branch:
+    branches:
     - main
     - master
 jobs:

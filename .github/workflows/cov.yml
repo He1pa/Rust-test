@@ -11,6 +11,7 @@ on:
 jobs:
   Test:
     runs-on: ubuntu-latest
+    container: rust:latest
     steps:
     - uses: actions/checkout@v2
     - name: Install cargo2junit
